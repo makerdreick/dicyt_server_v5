@@ -82,58 +82,56 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
    ``` 
    ![Texto alternativo](/static/servidor_db_/2.png)
 
-## Estado del Proyecto
+## Estado del Proyecto Actual
 
 Este proyecto está en desarrollo activo y actualmente se encuentra en la versión 0.1.125
 
 ### Versiones Estables
 
-- Versión 0.1.78: [Trabaja con Debian 12.5 de la versión estable 0.1.121]
+- Versión 0.1.78:
+- Trabaja con Debian 12.5 de la versión estable 0.1.121
 
 ### Características en Desarrollo
 
-- Funcionalidad CERTIFICACION ONLINE : [SISTEMA COM API GLOBAL PARA CERTIFICACION DIGITAL]
-- Mejoras en la interfaz de usuario: [ LA version basica esta pensada para uso nocomercial pero anivel universitario ya que es  un sisitma interno ,para poder cerficar a varias carreras del base instituto de investigacion.]
+- Funcionalidad Certificacion Online: SISTEMA COM API GLOBAL PARA CERTIFICACION DIGITAL
+  
+- Mejoras en la interfaz de usuario:La version basica esta pensada para uso no comercial pero a nivel universitario ya que es  un sistema interno ,para poder certificar a varias carreras en el area de invetigacion, y  instituto de investigacion.
 
 ### Próximas Actualizaciones
 
-- Nuevas características API GLOBAL: [Mediante un app andriod se podra validar certificaciones globales,a nivel nacional.]
-- Correcciones de errores menores: [Mejoras en las clasificacion de cerficiacions segun el rango de estudio]
-
+- Nuevas características API GLOBAL: Con un app andriod se podra validar certificaciones globales,a nivel nacional.
+- Correcciones de errores menores: Mejoras en las clasificacion de cerficaciones segun el rango de estudio.
 
 ## Ejemplos de Uso
 
 Aquí hay algunos ejemplos de cómo puedes utilizar este proyecto en situaciones reales:
 
-### Ejemplo 1: [certificacion global]
+###  Certificación de Estudios en Bolivia con lineas de investigacion en areas especificas
 
-[Descripción del escenario y cómo utilizar el proyecto en esa situación]
-------------------------------------------------------------------------------------------
+Sistema de certificacion de Aportes Academicos a nivel nacional  en el sistema CUEB.
+### 6. **Configurar git:**
+
 ```bash
-# Comandos o pasos para reproducir el escenario
 
-6. **Configurar git:**
-## Configuración de Git: Resumen de Comandos
 
-gui rapida git :
+### Configuración de Git: Resumen de Comandos
+
+Guía rápida de git:
 
 1. **Agregar cambios al área de preparación:**
-
    - `git add .`: Agrega todos los cambios en tu directorio de trabajo al área de preparación.
-   
    - `git add nombre_del_archivo`: Agrega un archivo específico al área de preparación. Reemplaza `nombre_del_archivo` con el nombre del archivo que deseas agregar.
 
 2. **Confirmar cambios:**
-
    - `git commit -m "mensaje"`: Confirma los cambios agregados al área de preparación con un mensaje descriptivo que explica qué cambios realizaste. Reemplaza `"mensaje"` con una descripción clara de tus cambios.
 
-   Por ejemplo:
-   ```bash
-   git commit -m "Agregado nuevo archivo de configuración"
+Por ejemplo:
 
+```bash
+     git commit -m "Agregado nuevo archivo de configuración"
+   ```
 video guia
 ![Video Demostrativo](enlace_al_video)
-
 
 ### Licencia
 Este proyecto está licenciado bajo [MIT License](LICENSE).
