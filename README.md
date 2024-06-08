@@ -83,18 +83,24 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
    ![Texto alternativo](/static/servidor_db_/2.png)
 
 6. **Configurar git:**
-Resumen de Comandos:
- ```bash
-   su
-   # si subes en modo global se volvera a copiar todo de nuevo
-   git add . 
-      #si vas subir solo un archivo
-   git add "nombre del archivo"
-   #para guardar y comentar cual fue el cambio,
-   git commit -m "global"
-   #para comentar solo un cambio al subi un archivo
-   git commit -m  "cambio de un archivo"
-   ``` 
+### Configuración de Git: Resumen de Comandos
+
+gui raida git :
+
+1. **Agregar cambios al área de preparación:**
+
+   - `git add .`: Agrega todos los cambios en tu directorio de trabajo al área de preparación.
+   
+   - `git add nombre_del_archivo`: Agrega un archivo específico al área de preparación. Reemplaza `nombre_del_archivo` con el nombre del archivo que deseas agregar.
+
+2. **Confirmar cambios:**
+
+   - `git commit -m "mensaje"`: Confirma los cambios agregados al área de preparación con un mensaje descriptivo que explica qué cambios realizaste. Reemplaza `"mensaje"` con una descripción clara de tus cambios.
+
+   Por ejemplo:
+   ```bash
+   git commit -m "Agregado nuevo archivo de configuración"
+
 
 ### Licencia
 Este proyecto está licenciado bajo [MIT License](LICENSE).
