@@ -1,4 +1,4 @@
-![Texto alternativo](static/servidor_db_/1.png)
+![Texto alternativo](/static/servidor_db_/1.png)
 
 # Instalación de Dependencias
 
