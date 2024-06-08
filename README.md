@@ -84,31 +84,31 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
 
 ## Estado del Proyecto
 
-Este proyecto está en desarrollo activo y actualmente se encuentra en la versión X.X.X.
+Este proyecto está en desarrollo activo y actualmente se encuentra en la versión 0.1.125
 
 ### Versiones Estables
 
-- Versión 1.0.0: [Descripción breve de la versión estable 1.0.0]
+- Versión 0.1.78: [Trabaja con Debian 12.5 de la versión estable 0.1.121]
 
 ### Características en Desarrollo
 
-- Funcionalidad ABC: [Breve descripción de la funcionalidad que está en desarrollo]
-- Mejoras en la interfaz de usuario: [Breve descripción de las mejoras en la IU que se están trabajando]
+- Funcionalidad CERTIFICACION ONLINE : [SISTEMA COM API GLOBAL PARA CERTIFICACION DIGITAL]
+- Mejoras en la interfaz de usuario: [ LA version basica esta pensada para uso nocomercial pero anivel universitario ya que es  un sisitma interno ,para poder cerficar a varias carreras del base instituto de investigacion.]
 
 ### Próximas Actualizaciones
 
-- Nuevas características XYZ: [Breve descripción de las características planeadas para futuras actualizaciones]
-- Correcciones de errores menores: [Descripción de los errores que se corregirán en la próxima versión]
+- Nuevas características API GLOBAL: [Mediante un app andriod se podra validar certificaciones globales,a nivel nacional.]
+- Correcciones de errores menores: [Mejoras en las clasificacion de cerficiacions segun el rango de estudio]
 
 
 ## Ejemplos de Uso
 
 Aquí hay algunos ejemplos de cómo puedes utilizar este proyecto en situaciones reales:
 
-### Ejemplo 1: [Nombre del Escenario]
+### Ejemplo 1: [certificacion global]
 
 [Descripción del escenario y cómo utilizar el proyecto en esa situación]
-
+------------------------------------------------------------------------------------------
 ```bash
 # Comandos o pasos para reproducir el escenario
 
