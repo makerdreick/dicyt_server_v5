@@ -80,6 +80,8 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
    # Luego ingresa tu contraseña de administrador y ejecuta el script
    ./install_nginx.sh
    ``` 
+   ![Texto alternativo](/static/servidor_db_/2.png)
+
 6. **Configurar git:**
 Resumen de Comandos:
  ```bash
