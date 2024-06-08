@@ -124,6 +124,9 @@ Guía rápida de git:
 
 2. **Confirmar cambios:**
    - `git commit -m "mensaje"`: Confirma los cambios agregados al área de preparación con un mensaje descriptivo que explica qué cambios realizaste. Reemplaza `"mensaje"` con una descripción clara de tus cambios.
+3. **Guardar los cambios**
+    - `git push `: Guarda los cambios.
+
  ```
 Por ejemplo:
 
