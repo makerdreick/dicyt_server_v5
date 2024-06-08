@@ -82,6 +82,17 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
    ``` 
 6. **Configurar git:**
 Resumen de Comandos:
-git add: Agrega archivos al área de preparación.
-git commit: Confirma los cambios con un mensaje descriptivo.
-git push: Envía los cambios confirmados al repositorio remoto.
+ ```bash
+   su
+   # si subes en modo global se volvera a copiar todo de nuevo
+   git add . 
+      #si vas subir solo un archivo
+   git add "nombre del archivo"
+   #para guardar y comentar cual fue el cambio,
+   git commit -m "global"
+   #para comentar solo un cambio al subi un archivo
+   git commit -m  "cambio de un archivo"
+   ``` 
+
+### Licencia
+Este proyecto está licenciado bajo [MIT License](LICENSE).
