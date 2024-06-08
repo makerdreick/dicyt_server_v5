@@ -82,10 +82,40 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
    ``` 
    ![Texto alternativo](/static/servidor_db_/2.png)
 
-6. **Configurar git:**
-### Configuración de Git: Resumen de Comandos
+## Estado del Proyecto
 
-gui raida git :
+Este proyecto está en desarrollo activo y actualmente se encuentra en la versión X.X.X.
+
+### Versiones Estables
+
+- Versión 1.0.0: [Descripción breve de la versión estable 1.0.0]
+
+### Características en Desarrollo
+
+- Funcionalidad ABC: [Breve descripción de la funcionalidad que está en desarrollo]
+- Mejoras en la interfaz de usuario: [Breve descripción de las mejoras en la IU que se están trabajando]
+
+### Próximas Actualizaciones
+
+- Nuevas características XYZ: [Breve descripción de las características planeadas para futuras actualizaciones]
+- Correcciones de errores menores: [Descripción de los errores que se corregirán en la próxima versión]
+
+
+## Ejemplos de Uso
+
+Aquí hay algunos ejemplos de cómo puedes utilizar este proyecto en situaciones reales:
+
+### Ejemplo 1: [Nombre del Escenario]
+
+[Descripción del escenario y cómo utilizar el proyecto en esa situación]
+
+```bash
+# Comandos o pasos para reproducir el escenario
+
+6. **Configurar git:**
+## Configuración de Git: Resumen de Comandos
+
+gui rapida git :
 
 1. **Agregar cambios al área de preparación:**
 
@@ -100,6 +130,9 @@ gui raida git :
    Por ejemplo:
    ```bash
    git commit -m "Agregado nuevo archivo de configuración"
+
+video guia
+![Video Demostrativo](enlace_al_video)
 
 
 ### Licencia
