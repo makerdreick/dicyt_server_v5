@@ -1,3 +1,5 @@
+![Texto alternativo](static/servidor_db_/1.png)
+
 # Instalación de Dependencias
 
 Para comenzar a trabajar en este proyecto, primero debes asegurarte de tener todas las dependencias necesarias instaladas en tu sistema. Sigue los pasos a continuación para instalarlas:
@@ -78,3 +80,8 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
    # Luego ingresa tu contraseña de administrador y ejecuta el script
    ./install_nginx.sh
    ``` 
+6. **Configurar git:**
+Resumen de Comandos:
+git add: Agrega archivos al área de preparación.
+git commit: Confirma los cambios con un mensaje descriptivo.
+git push: Envía los cambios confirmados al repositorio remoto.
