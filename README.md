@@ -79,7 +79,7 @@ Asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
    su
    # Luego ingresa tu contraseña de administrador y ejecuta el script
    ./install_nginx.sh
-   ``` 
+   ```
    ![Texto alternativo](/static/servidor_db_/2.png)
 
 ## Estado del Proyecto Actual
@@ -106,10 +106,10 @@ Este proyecto está en desarrollo activo y actualmente se encuentra en la versi�
 
 Aquí hay algunos ejemplos de cómo puedes utilizar este proyecto en situaciones reales:
 
-###  Certificación de Estudios en Bolivia con lineas de investigacion en areas especificas
+###  Certificación de Estudios en Bolivia con lineas de investigación en areas especificas
 
-Sistema de certificacion de Aportes Academicos a nivel nacional  en el sistema CUEB.
-### 6. **Configurar git:**
+Sistema de certificacion de Aportes Académicos a nivel nacional  en el sistema CUEB.
+### 7. **Configurar git:**
 
 ```bash
 
@@ -127,12 +127,12 @@ Guía rápida de git:
 3. **Guardar los cambios**
     - `git push `: Guarda los cambios.
 
- ```
+```
 Por ejemplo:
 
 ```bash
      git commit -m "Agregado nuevo archivo de configuración"
- ```
+```
 
 video guia
 ![Video Demostrativo](enlace_al_video)
