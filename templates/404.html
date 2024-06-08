@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página no encontrada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .content {
+            max-width: 600px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .imagen {
+            max-width: 70%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <img src="{{ url_for('static', filename='img/404.gif') }}" alt="imagen" class="imagen">
+            <p>Lo sentimos, la página que estás buscando no se ha encontrado.</p>
+            <p>Puedes regresar a la <a href="/">página de inicio</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

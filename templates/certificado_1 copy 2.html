@@ -1,0 +1,214 @@
+<!--certificado_1.html-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificación DICYT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .certification {
+            margin-bottom: 20px;
+            border-top: 2px solid black;
+            padding-top: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #000;
+            padding: 9px;
+        }
+        .footer {
+            font-style: italic;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .signature {
+            float: right;
+        }
+        .left {
+            text-align: left;
+        }
+        .right {
+            text-align: right;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .col-sm {
+            flex: 1;
+        }
+        .empty-space {
+            margin-bottom: 85px;
+        }
+        .empty-space2 {
+            margin-bottom: 150px;
+        }
+        .empty-space3 {
+            margin-bottom: 50px;
+        }
+        .reglas-archivo {
+            display: grid;
+            gap: 10px;
+        }
+        .regla {
+            font-size: 9px;
+            text-align: center;
+            line-height: 1;
+            padding-bottom: 2px;
+            box-sizing: border-box;
+        }
+        @media (min-width: 768px) {
+            .reglas-archivo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .mini {
+            font-size: smaller;
+        }
+       
+        
+    </style>
+</head>
+<body>
+    <div class="empty-space2"></div>
+
+    <div class="container">
+        <div class="certification">
+            <div class="header">
+                <div class="row">
+                    <div class="col-sm left">
+                        <a>CERTIFICACION-DICYT Nº {{ultimo_registro.cod_reg_1}} / {{año_actual }}</a><br>
+                        <a>El Alto {{fecha_nueva}}</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="section">
+                <div class="row">
+                    <div class="col-sm"></div>
+                    <div class="col-sm right">
+                        <div class="section-auto"> 
+                            <div class="datos" style="text-align: justify;">
+                                EL SUSCRITO {{ administrador.grado_estudio}} {{ administrador.nombre }} {{ administrador.ape_pate }} {{ administrador.ape_mate }}
+                                DIRECTOR DE LA DIRECCIÓN DE INVESTIGACIÓN CIENCIA Y TECNOLÓGICA, DEPENDIENTE DEL VICERRECTORADO, EN CUANTO EL DERECHO LE CONFIERE.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <p><strong>CERTIFICADO:</strong></p>
+                <div class="section-auto">
+                    <div class="datos" style="text-align:  justify; ">
+                        <p line-height: 2;>Que según en los antecedentes que obran en la Dirección de Investigación Ciencia y Tecnológica <strong>(DICYT)</strong> de la Universidad Pública de El Alto; se verifica que {{ formulario.genero_id }} <strong>{{ formulario.grado_p }} {{ formulario.nombres }} {{ formulario.ap_paterno}} {{ formulario.ap_materno }}</strong> con Cedula de Identidad <strong> {{ formulario.carnet }}.{{ formulario.exten }}</strong> Ha realizado una publicación en calidad de<strong> {{ formulario.tipo_autor }} </strong>la misma se detalla en el siguiente cuadro:</p>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>TIPO DE REVISTA</th>
+                                    <th>TIPO DE PRODUCCIÓN</th>
+                                    <th>TITULO</th>
+                                    <th>AÑO DE PUBLICACIÓN</th>
+                                    <th>DEPOSITO LEGAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ formulario.tipo_revista }}</td>
+                                    <td>{{ formulario.tipo_pro }}</td>
+                                    <td>{{ formulario.titulo }}</td>
+                                    <td>{{ formulario.anio_publi }}</td>
+                                    <td>{{ formulario.cod_depo }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <p>Se extiende el presente certificado <strong>VALIDO POR 30</strong> días a partir de la emisión de la misma.</p>
+                <p>Es cuanto certifico en honor a la verdad y a solicitud escrita del interesado.</p>
+                <div class="empty-space3"></div>
+
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-sm left">
+                            <h1>firma</hi>
+                            
+                        </div>
+                        <div class="col-sm right">
+                            <p style="font-size: 10px;">Dreick-UPEA-DICYT:</p>
+                            <div >
+                                <img alt="Código QR" id="codigoQR">
+                            </div>
+                            <div style="width: 350px; height: 150px;">
+                                <svg id="codigoBarras" style="transform: rotate(-90deg); width: 100%; height: 100%;"></svg>
+                            </div>      <!-- No hay contenido en esta columna -->
+                        </div>
+                    </div>
+                    
+                    <div class="mini" style="text-align:  justify;">
+                        <p>DC/archivo</p>
+                        <p>Cc/archivo DICYT</p>
+                    </div>
+                    
+                    <div class="empty-space3"></div>
+
+                    <div class="reglas-archivo">
+                        <div class="regla">
+                            {{ fecha_actual }} --SRD-2024 --> {{ultimo_registro.cod_serial}}
+                            <hr>
+                            <p>Dir.: Av.Sucre A s/n Villa Esperanza Telf:(591-2)2-84417-Fax(591-2)-2845800 www.dicyt.bo - Sistema de Certificaciones DICYT 2024 Dev-web Maker Dreick Oficial Ing.Sistemas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+
+    <script>
+        const $imagenQR = document.querySelector("#codigoQR");
+        const textoQR = "{{datos_qr}}";
+        new QRious({
+            element: $imagenQR,
+            value: textoQR,
+            size: 150,
+            backgroundAlpha: 0,
+            foreground: "black",
+        });
+
+        const $codigoBarras = document.querySelector("#codigoBarras");
+        const textoCodigoBarras = "T{{barra_1}}";
+        JsBarcode($codigoBarras, textoCodigoBarras, {
+            format: "CODE128",
+            width: 2,
+            height: 50,
+            displayValue: false
+        });
+    </script>
+</body>
+</html>

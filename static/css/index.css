@@ -1,0 +1,47 @@
+/* Archivo CSS personalizado para ajustes */
+/* Cambios de estilo para parecerse a Facebook */
+body {
+    background-color: #f0f2f5; /* Color de fondo similar al de Facebook */
+    font-family: Arial, sans-serif; /* Fuente similar a la de Facebook */
+}
+
+.container {
+    max-width: 400px; /* Ancho máximo para centrar el contenido */
+    margin-top: 50px; /* Espacio superior para centrar en la página */
+}
+
+.title {
+    color: #1877f2; /* Color del título similar al de Facebook */
+}
+
+#flash-message {
+    margin-bottom: 20px; /* Espacio inferior para separar los mensajes */
+}
+
+/* Cambios de estilo para los botones */
+.button {
+    width: 100%; /* Ancho completo para ocupar todo el contenedor */
+}
+
+/* Cambios de estilo para las etiquetas */
+.label {
+    font-weight: bold; /* Negrita para resaltar las etiquetas */
+}
+
+.box {
+    max-width: 400px; /* Ancho máximo para centrar el contenido */
+    margin: 0 auto; /* Centrar horizontalmente en la página */
+    margin-top: 50px; /* Espacio superior para centrar en la página */
+    position: relative;
+    border: 2px solid transparent; /* Borde transparente inicial */
+    animation: borderAnimation 1s infinite alternate; /* Animación automática del borde */
+}
+
+@keyframes borderAnimation {
+    0% {
+        border-color: transparent; /* Borde transparente al principio */
+    }
+    100% {
+        border-color: #3273dc; /* Borde con color al final */
+    }
+}

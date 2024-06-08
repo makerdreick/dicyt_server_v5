@@ -1,0 +1,47 @@
+.aside {
+    height: 100vh;
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-top: none; /* Elimina el borde superior */
+}
+
+
+
+.admin-logo {
+    display: flex; /* Usa flexbox para alinear elementos */
+    align-items: center; /* Alinea verticalmente */
+}
+
+.admin-logo img {
+    margin-right: 0.5rem; /* Agrega espaciado entre el logo y el texto */
+}
+
+
+
+.admin-menu-list li {
+    margin-bottom: 0.5rem; /* Agrega espaciado entre elementos del menú */
+}
+
+.admin-menu-list li a.is-active {
+    background-color: #2959dd; /* Establece un color de fondo cuando se selecciona */
+}
+
+
+@media (max-width: 768px) {
+    .aside {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+}
+
+.main-content {
+    margin-left: 210px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}

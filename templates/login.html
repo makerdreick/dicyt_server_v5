@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> <!-- Archivo CSS personalizado para ajustes -->
+    <style>
+        /* Estilo adicional para centrar el formulario en dispositivos móviles */
+        @media screen and (max-width: 768px) {
+            .box {
+                margin: 0 auto;
+                max-width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="box"> <!-- Agregamos un contenedor interno con clase "box" -->
+                <h1 class="title">Inicio de Sesión</h1>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div id="flash-message" class="notification {% if category == 'error' %}is-danger{% elif category == 'success' %}is-success{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form id="login-form" method="post">
+                    <div class="field">
+                        <label class="label">Usuario</label>
+                        <div class="control">
+                            <input class="input" type="text" name="username" placeholder="Ingresa tu usuario" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Contraseña</label>
+                        <div class="control">
+                            <input class="input" type="password" name="password" placeholder="Ingresa tu contraseña" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Ingresa el Token</label>
+                        <div class="control">
+                            <input id="token-input" class="input" type="text" name="token" placeholder="Ingresa el token" required readonly onfocus="this.removeAttribute('readonly');"> <!-- Añadimos el atributo "readonly" al input, pero lo eliminamos al hacer clic -->
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Token Seguridad</label>
+                        <div class="control">
+                            <input class="input" id="token-security" type="text" value="{{ token }}" readonly>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" type="submit">Iniciar Sesión</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/bulma_js.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/regla.js') }}"></script> <!-- Archivo JavaScript personalizado para ajustes -->
+</body>
+</html>

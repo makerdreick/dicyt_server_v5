@@ -1,0 +1,6 @@
+#llevar el codigo  SQL a ssqlite3 
+
+sqlite3 data.db < datos1.sql
+
+# 
+sqlite3 data.db .dump > datos.sql

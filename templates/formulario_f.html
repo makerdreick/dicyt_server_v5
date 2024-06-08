@@ -1,0 +1,405 @@
+<!-- usuarios_f.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='web_local/css_/all.min.css') }}"><!--https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css----->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='web_local/css_/v4.6.2.bootstrap.min.css') }}"><!--https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css--->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='web_local/css_/alertify.min.css') }}"><!-- href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" -->
+    <script src="{{ url_for('static', filename='web_local/script_/alertify.min.js') }}"></script><!-- https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js-->
+
+<style>
+    .alert {
+        position: fixed;
+        top: 50px; /* Ajusta según tu preferencia */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+        width: 300px; /* Ajusta el ancho según sea necesario */
+    }
+    .table-container {
+        width: 1300px; /* Ancho máximo de 800px */
+        height: 600px; /* Alto máximo de 500px */
+        overflow: auto; /* Habilita el desplazamiento si el contenido excede las dimensiones */
+        border: 1px solid #ccc; /* Borde para visualización */
+    }
+    
+    .table-wrapper {
+        width: 100%; /* La tabla se ajustará al 100% del contenedor */
+        height: 100%; /* La tabla se ajustará al 100% del contenedor */
+        overflow: auto; /* Habilita el desplazamiento si el contenido excede las dimensiones */
+    }
+    
+    .table {
+        width: 100%; /* La tabla ocupará el 100% del contenedor */
+        /* Estilos adicionales para la tabla según sea necesario */
+    }
+    .notificacion {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    
+    .notificacion-exito {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .notificacion-advertencia {
+        background-color: #FF9800;
+        color: white;
+    }
+    
+    .notificacion-error {
+        background-color: #f44336;
+        color: white;
+    }
+    
+    
+</style>
+
+
+</head>
+<body>
+    
+    
+    <!-- Botón para abrir el modal de agregar -->
+<button id="btnAgregar" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">Agregar Formulario</button>
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="modalAgregarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAgregarLabel">Agregar Registro al Formulario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formularioForm" method="POST" action="/crear_formulario">
+                    <div class="form-group">
+                        <label for="cargo">Cargo:</label>
+                        <select class="form-control" id="cargo" name="cargo" required>
+                            <option value="" selected disabled>Selecciona un cargo</option>
+                            <option value="DIRECTOR">Director</option>
+                            <option value="SECRETARIA">Secretaria</option>
+                            <option value="CENTRO DE ESTUDIANTES">Centro de Estudiantes</option>
+                            <option value="COORDINADOR INSTITUTO DE INVESTIGACION">Coordinador Instituto de Investigación</option>
+                            <option value="DOCENTE INVESTIGADOR">Docente Investigador</option>
+                            <option value="AUXILIAR de INVESTIGACION">Auxiliar de Investigación</option>
+                            <option value="DOCENTE COLABORADOR-PROYECTO IDH">Docente Colaborador-Proyecto IDH</option>
+                            <option value="AUXILIAR INVESTIGACION IDH">Auxiliar Investigación IDH</option>
+                            <option value="AUXILIAR INVESTIGACION IDH EXTENSION">Auxiliar Investigación IDH Extensión</option>
+                            <option value="AUX INVESTIGACION COMPLEMENTARIO">Aux Investigación Complementario</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tp_cargo">Tipo de Cargo:</label>
+                        <select class="form-control" id="tp_cargo" name="tp_cargo" required>
+                            <option value="" selected disabled>Selecciona un tipo de cargo</option>
+                            <option value="IT">IT</option>
+                            <option value="NF">NF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="gestion">Gestión:</label>
+                        <input type="number" class="form-control" id="gestion" name="gestion">
+                    </div>
+                    <div class="form-group">
+                        <label for="cod_cargo">Código de Cargo:</label>
+                        <input type="text" class="form-control" id="cod_cargo" name="cod_cargo">
+                    </div>
+                    <div class="form-group">
+                        <label for="grado_p">Grado P:</label>
+                        <select class="form-control" id="grado_p" name="grado_p" required>
+                            <option value="" selected disabled>Selecciona un grado</option>
+                            <option value="Univ.">Univ.</option>
+                            <option value="Tec.">Tec.</option>
+                            <option value="Lic.">Lic.</option>
+                            <option value="Ing.">Ing.</option>
+                            <option value="M.Sc.">M.Sc.</option>
+                            <option value="Dr.C.">Dr.C.</option>
+                            <option value="Dr.">Dr.</option>
+                            <option value="Ph.D.">Ph.D.</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" class="form-control" id="nombres" name="nombres" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ap_paterno">Apellido Paterno:</label>
+                        <input type="text" class="form-control" id="ap_paterno" name="ap_paterno" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ap_materno">Apellido Materno:</label>
+                        <input type="text" class="form-control" id="ap_materno" name="ap_materno" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genero">Género:</label>
+                        <select class="form-control" id="genero" name="genero" required>
+                            <option value="" selected disabled>Selecciona un género</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="carnet">Carnet:</label>
+                        <input type="text" class="form-control" id="carnet" name="carnet" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exten">Extensión:</label>
+                        <select class="form-control" id="exten" name="exten" required>
+                            <option value="" selected disabled>Selecciona una extensión</option>
+                            <option value="L.P.">La Paz</option>
+                            <option value="C.B.B.">Cochabamba</option>
+                            <option value="SCZ">Santa Cruz</option>
+                            <option value="BN">Beni</option>
+                            <option value="PT">Potosi</option>
+                            <option value="OR">Oruro</option>
+                            <option value="CH">Chuquisaca</option>
+                            <option value="TJ">Tarija</option>
+                            <option value="PA">Pando</option>
+                            <option value="EX">Extranjero</option>
+                            <option value="ESTU_EXTRA">Estudiante Extranjero</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="RU">Registro Universitario:</label>
+                        <input type="number" class="form-control" id="RU" name="RU" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cod_depo">Código de Depósito Legal:</label>
+                        <input type="text" class="form-control" id="cod_depo" name="cod_depo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="titulo">Título de Proyecto o Revista:</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_pro">Tipo de Producción:</label>
+                        <input type="text" class="form-control" id="tipo_pro" name="tipo_pro"required >
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_revista">Tipo de Revista:</label>
+                        <input type="text" class="form-control" id="tipo_revista" name="tipo_revista"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="anio_publi">Año de Publicación de Acticulo:</label>
+                        <input type="number" class="form-control" id="anio_publi" name="anio_publi"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_autor">Tipo de Autor:</label>
+                        <select class="form-control" id="tipo_autor" name="tipo_autor"required >
+                        <option value="" selected disabled>Tipo de Colaboración</option>
+                        <option value="Autor">Autor</option>
+                        <option value="Coautor">Coautor</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" >Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- editar -->
+<div id="modalEditarFormulario" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarFormularioEditar()">&times;</span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div id="formEditar">
+                        <h5 class="h4 mb-4">Editar formulario</h5> 
+                        <form id="formularioEditarForm">
+                            <input type="hidden" id="idEditar" name="idEditar">
+                            <!-- Los demás campos del formulario -->
+                            <div class="form-group">
+                                <label for="cargoEditar">Cargo:</label>
+                                <select class="form-control" id="cargoEditar" name="cargoEditar" required>
+                                    <option value="" selected disabled>Selecciona un cargo</option>
+                                    <option value="DIRECTOR">Director</option>
+                                    <option value="SECRETARIA">Secretaria</option>
+                                    <option value="CENTRO DE ESTUDIANTES">Centro de Estudiantes</option>
+                                    <option value="COORDINADOR INSTITUTO DE INVESTIGACION">Coordinador Instituto de Investigación</option>
+                                    <option value="DOCENTE INVESTIGADOR">Docente Investigador</option>
+                                    <option value="AUXILIAR de INVESTIGACION">Auxiliar de Investigación</option>
+                                    <option value="DOCENTE COLABORADOR-PROYECTO IDH">Docente Colaborador-Proyecto IDH</option>
+                                    <option value="AUXILIAR INVESTIGACION IDH">Auxiliar Investigación IDH</option>
+                                    <option value="AUXILIAR INVESTIGACION IDH EXTENSION">Auxiliar Investigación IDH Extensión</option>
+                                    <option value="AUX INVESTIGACION COMPLEMENTARIO">Aux Investigación Complementario</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tp_cargoEditar">Tipo de Cargo:</label>
+                                <select class="form-control" id="tp_cargoEditar" name="tp_cargoEditar" required>
+                                    <option value="" selected disabled>Selecciona un tipo de cargo</option>
+                                    <option value="IT">IT</option>
+                                    <option value="NF">NF</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gestionEditar">Gestión:</label>
+                                <input type="number" class="form-control" id="gestionEditar" name="gestionEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cod_cargoEditar">Código de Cargo:</label>
+                                <input type="text" class="form-control" id="cod_cargoEditar" name="cod_cargoEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="grado_pEditar">Grado P:</label>
+                                <select class="form-control" id="grado_pEditar" name="grado_pEditar" required>
+                                    <option value="" selected disabled>Selecciona un grado</option>
+                                    <option value="Univ.">Univ.</option>
+                                    <option value="Tec.">Tec.</option>
+                                    <option value="Lic.">Lic.</option>
+                                    <option value="Ing.">Ing.</option>
+                                    <option value="M.Sc.">M.Sc.</option>
+                                    <option value="Dr.C.">Dr.C.</option>
+                                    <option value="Dr.">Dr.</option>
+                                    <option value="Ph.D.">Ph.D.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nombresEditar">Nombres:</label>
+                                <input type="text" class="form-control" id="nombresEditar" name="nombresEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ap_paternoEditar">Apellido Paterno:</label>
+                                <input type="text" class="form-control" id="ap_paternoEditar" name="ap_paternoEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ap_maternoEditar">Apellido Materno:</label>
+                                <input type="text" class="form-control" id="ap_maternoEditar" name="ap_maternoEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="generoEditar">Género:</label>
+                                <select class="form-control" id="generoEditar" name="generoEditar" required>
+                                    <option value="" selected disabled>Selecciona un género</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="carnetEditar">Carnet:</label>
+                                <input type="text" class="form-control" id="carnetEditar" name="carnetEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="extenEditar">Extensión:</label>
+                                <select class="form-control" id="extenEditar" name="extenEditar" required>
+                                    <option value="" selected disabled>Selecciona una extensión</option>
+                                    <option value="L.P.">La Paz</option>
+                                    <option value="C.B.B.">Cochabamba</option>
+                                    <option value="SCZ">Santa Cruz</option>
+                                    <option value="BN">Beni</option>
+                                    <option value="PT">Potosi</option>
+                                    <option value="OR">Oruro</option>
+                                    <option value="CH">Chuquisaca</option>
+                                    <option value="TJ">Tarija</option>
+                                    <option value="PA">Pando</option>
+                                    <option value="EX">Extranjero</option>
+                                    <option value="ESTU_EXTRA">Estudiante Extranjero</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="RUEditar">Registro Universitario:</label>
+                                <input type="number" class="form-control" id="RUEditar" name="RUEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cod_depoEditar">Código de Depósito Legal:</label>
+                                <input type="text" class="form-control" id="cod_depoEditar" name="cod_depoEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tituloEditar">Título de Proyecto o Revista:</label>
+                                <input type="text" class="form-control" id="tituloEditar" name="tituloEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_proEditar">Tipo de Producción:</label>
+                                <input type="text" class="form-control" id="tipo_proEditar" name="tipo_proEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_revistaEditar">Tipo de Revista:</label>
+                                <input type="text" class="form-control" id="tipo_revistaEditar" name="tipo_revistaEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="anio_publiEditar">Año de Publicación de Artículo:</label>
+                                <input type="number" class="form-control" id="anio_publiEditar" name="anio_publiEditar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_autorEditar">Tipo de Autor:</label>
+                                <select class="form-control" id="tipo_autorEditar" name="tipo_autorEditar" required>
+                                    <option value="" selected disabled>Tipo de Colaboración</option>
+                                    <option value="Autor">Autor</option>
+                                    <option value="Coautor">Coautor</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="enviarFormularioEditar()">Guardar Cambios</button>
+                            <button type="button" class="btn btn-secondary" onclick="cerrarFormularioEditar()">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--final -->
+
+
+
+
+
+<!-- Tabla de formularios -->
+<div class="table-container">
+    <div class="table-wrapper">
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Tipo de Producción</th>
+                    <th>Tipo de Revista</th>
+                    <th>Año de Publicación</th>
+                    <th>Cargo</th>
+                    <th>Gestión</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Carnet</th>
+                    <th>Tipo de Autor</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaFormularios">
+                <!-- Aquí se cargarán los formularios -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- mesaje de confirmacion  editar-->
+<div id="mensajesEditar"></div>
+<!-- mesaje rregistramos formulario-->
+<div id="mensajeRegistro"></div>
+
+<!-- Elemento para la notificación -->
+
+
+
+
+</body>
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='web_local/script_/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='web_local/script_/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/script/formulario_agregar.js') }}"></script>
+<!--//$('#generoEditar').val(response[17]); -->
+</html>

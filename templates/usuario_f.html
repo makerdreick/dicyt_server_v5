@@ -1,0 +1,223 @@
+<!-- usuarios_f.html-->
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/web_local/css_/all.min.css') }}"><!--https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css----->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/web_local/css_/bootstrap.min.css') }}"><!-- https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css--->
+    <!--  alerta-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/web_local/css_/alertify.min.css') }}"><!-- href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" -->
+    <script src="{{ url_for('static', filename='/web_local/script_/alertify.min.js') }}"></script><!-- https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js-->
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 20% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .image-container:hover .overlay {
+        opacity: 1;
+    }
+    
+   
+    
+
+</style>
+</head>
+<body>
+    <!-- Botón para abrir el modal de agregar -->
+    <button id="btnAgregar"   class="btn btn-primary" onclick="mostrarFormularioAgregar()">Agregar Nuevo Usuario </button>
+
+         <!-- Modal de agregar/editar registro -->
+         <div id="modalAgregar" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div id="formAgregar">
+                                <h5 class="h4 mb-4">Agregar Usuario</h5>
+                                <form id="usuarioForm">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apell_pate">Apellido Paterno:</label>
+                                        <input type="text" class="form-control" id="apell_pate" name="apell_pate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apell_mate">Apellido Materno:</label>
+                                        <input type="text" class="form-control" id="apell_mate" name="apell_mate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usuario">Usuario:</label>
+                                        <input type="text" class="form-control" id="usuario" name="usuario" required oninput="verificarNombreUsuario()">
+                                        <div id="mensajeUsuario" class="text-muted"></div> <!-- Aquí mostraremos el mensaje sobre la disponibilidad del nombre de usuario -->
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contraseña">Contraseña:</label>
+                                        <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="rol">Rol:</label>
+                                        <select class="form-control" id="rol" name="rol" required>
+                                            <option value="" selected disabled>Seleccione un rol</option>
+                                            <option value="admin">Administrador</option>
+                                            <option value="invitado">Invitado</option>
+                                            <option value="usuario">Usuario</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="agregarUsuario()">Guardar</button>
+                                    <button type="button" class="btn btn-secondary" onclick="cerrarFormularioAgregar()">Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- parte de editar  -->
+    <div id="modalEditar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarFormularioEditar()">&times;</span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div id="formEditar">
+                            <h5 class="h4 mb-4">Editar Usuario</h5> 
+                            <form id="usuarioEditarForm">
+                                <input type="hidden" id="editUsuarioId">
+                                <div class="form-group">
+                                    <label for="editNombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="editNombre" name="nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editApellidoPaterno">Apellido Paterno:</label> <!-- Corrección de identificador -->
+                                    <input type="text" class="form-control" id="editApellidoPaterno" name="apell_pate" required> <!-- Corrección de identificador -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="editApellidoMaterno">Apellido Materno:</label> <!-- Corrección de identificador -->
+                                    <input type="text" class="form-control" id="editApellidoMaterno" name="apell_mate" required> <!-- Corrección de identificador -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="editUsuario">Usuario:</label>
+                                    <input type="text" class="form-control" id="editUsuario" name="usuario" required oninput="verificarNombreUsuarioEditar('editUsuario')">
+                                    <div id="mensajeEditUsuario" class="text-muted"></div> <!-- Aquí mostraremos el mensaje sobre la disponibilidad del nombre de usuario -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="editPass">Contraseña:</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="editPass" name="contraseña" required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editRol">Rol:</label>
+                                    <select class="form-control" id="editRol" name="rol" required>
+                                        <option value="" selected>Seleccione un rol</option>
+                                        <option value="admin">Administrador</option>
+                                        <option value="invitado">Invitado</option>
+                                        <option value="usuario">Usuario</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="guardarCambiosUsuario()">Guardar Cambios</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarFormularioEditar()">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- Rest
+
+
+<!--  fina editar -->
+    <!-- Tabla de usuarios -->
+<div class="table-container">
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Usuario</th>
+                <th>Cargo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tablaUsuarios">
+            <!-- Aquí se cargarán los usuarios -->
+        </tbody>
+    </table>
+</div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='/web_local/script_/bootstrap.min.js') }}"></script><!--https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"-->
+    <script src="{{ url_for('static', filename='/web_local/script_/jquery-3.5.1.min.js') }}"></script><!--https://code.jquery.com/jquery-3.5.1.min.js-->
+    <script src="{{ url_for('static', filename='/script/control.js') }}"></script><!--- codigo control de toda pagina -->
+
+</body>
+</html>
+{% endblock %}

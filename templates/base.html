@@ -1,0 +1,322 @@
+<!--base.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>dicyt 2024</title>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        /* Agrega estilos CSS personalizados */
+        body {
+            margin: 0; /* Elimina el margen predeterminado del cuerpo */
+            padding-bottom: 50px; /* Ajusta el espacio en la parte inferior para el footer */
+        }
+    
+        .section.is-main-section {
+            max-height: calc(95vh - 70px); /* Reducir aún más la altura máxima de la sección */
+            overflow-y: auto; /* Agregar desplazamiento vertical si el contenido es demasiado largo */
+            margin: 5px; /* Ajustar los márgenes para acercar el contenido al borde */
+            padding: 1px; /* Agregar un padding para separar el contenido del borde */
+            border: 0px solid #ccc; /* Agregar un borde para visualizar mejor los límites de la sección */
+        }
+    
+        .footer {
+            position: fixed; /* Fija el footer en la ventana del navegador */
+            left: 0; /* Lo coloca en el borde izquierdo */
+            right: 0; /* Lo coloca en el borde derecho */
+            bottom: 0; /* Lo coloca en la parte inferior */
+            padding: 15px; /* Agrega espacio al contenido del footer */
+            background-color: #f9f9f9; /* Cambia el color de fondo si es necesario */
+            border-top: 1px solid #ddd; /* Agrega un borde superior opcional */
+            z-index: 1000; /* Asegura que esté en la parte superior de otros elementos */
+        }
+
+        /* Estilos para la pestaña activa */
+        .menu-list a.is-active {
+            background-color: #007BFF; /* Color de fondo azul */
+            color: #000000 !important; /* Color de texto negro */
+        }
+        .menu-list a.is-active .icon i {
+            color: #000000; /* Color de icono negro */
+        }
+
+        /* Opcional: Estilo de los enlaces del menú cuando no están activos */
+        .menu-list a {
+            color: #4A4A4A; /* Color de texto predeterminado */
+        }
+        .menu-list a .icon i {
+            color: #4A4A4A; /* Color de icono predeterminado */
+        }
+    </style>
+</head>
+<body>
+    <aside class="aside">
+        <div class="menu is-menu-main">
+            <ul class="menu-list">
+                <li>
+                    <div class="admin-logo">
+                        <a href="/admin">
+                            <img src="{{ url_for('static', filename='img_data/cortar.png') }}" alt="Logo">
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <p class="menu-label">Menu</p>
+            <ul class="menu-list">
+                <li>
+                    <a class="{% if pagina_actual == 'busqueda' %}is-active{% endif %}" href="/busqueda">
+                        <span class="icon"><i class="nc-icon nc-badge"></i></span>
+                        <span>BUSQUEDA</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="has-icon has-dropdown-icon {% if pagina_actual in ['AgregarUsuario', 'RegistrarFormulario'] %}is-active{% endif %}" id="admin-menu">
+                        <span class="icon"><i class="mdi mdi-view-list"></i></span>
+                        <span class="menu-item-label">ADMINISTRACION</span>
+                        <span class="dropdown-icon icon"><i class="mdi mdi-plus"></i></span>
+                    </a>
+                    <ul id="admin-menu-options" style="display: none;">
+                        <li>
+                            <a class="{% if pagina_actual == 'AgregarUsuario' %}is-active{% endif %}" href="/AgregarUsuario">
+                                <span class="icon"><i class="nc-icon nc-badge"></i></span>
+                                <span>Agregar Usuario</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="{% if pagina_actual == 'RegistrarFormulario' %}is-active{% endif %}" href="/RegistrarFormulario">
+                                <span class="icon"><i class="nc-icon nc-badge"></i></span>
+                                <span>Registrar Formulario</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="{% if pagina_actual == 'reporte' %}is-active{% endif %}" href="/reporte">
+                        <span class="icon"><i class="nc-icon nc-caps-small"></i></span>
+                        <span>REGISTROS</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    
+    <div class="main-content">
+        <nav class="navbar is-transparent">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/admin">
+                    <h1><strong>DICYT</strong></h1>
+                </a>
+                <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="navbarExampleTransparentExample" class="navbar-menu">
+                <div class="navbar-start"></div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <i class="fas fa-helicopter"></i>
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item js-modal-trigger" data-target="modal-video" data-video-src="{{ url_for('static', filename='videos/tutorial.mp4') }}">
+                            Busqueda -<i class="fas fa-video"></i>
+                        </a>
+                        <a class="navbar-item js-modal-trigger" data-target="modal-video" data-video-src="{{ url_for('static', filename='videos/tutorial.mp4') }}">
+                            Registro - <i class="fas fa-video"></i>
+                        </a>
+                        <a class="navbar-item js-modal-trigger" data-target="modal-video" data-video-src="{{ url_for('static', filename='videos/tutorial.mp4') }}">
+                            Reporte -<i class="fas fa-video"></i>
+                        </a>
+                        <a class="navbar-item js-modal-trigger" data-target="modal-help">
+                            Chat -<i class="fab fa-telegram"></i>
+                        </a>
+                        <a class="navbar-item js-modal-trigger" data-target="modal-version">
+                            Versión -<i class="fas fa-laptop-code"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-center">
+                    <span class="navbar-item"> <strong>SISTEMA de CERTIFICACION</strong></span>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="field is-grouped">
+                            <p class="control">
+                                <a class="button is-light" target="_blank">
+                                    <span class="icon">
+                                        <i class="far fa-user"></i>
+                                    </span>
+                                    <span>Usuario: {{ usuario }}</span>
+                                </a>
+                            </p>
+                            <p class="control">
+                                <a class="button is-primary" href="{{ url_for('login.login_page') }}">
+                                    <span class="icon">
+                                        <i class="fas fa-plane-departure"></i>
+                                    </span>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="section is-main-section">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon"><i class="mdi mdi-finance"></i></span>
+                        Sistema
+                    </p>
+                    <a href="#" class="card-header-icon">
+                        <span class="icon"><i class="mdi mdi-reload"></i></span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="chart-area">
+                        <div style="height: 80%;"> <!-- Modifica el valor de altura aquí -->
+                            <div class="chartjs-size-monitor">
+                                <div class="chartjs-size-monitor-expand">
+                                    <div>
+                                        {% block content %}
+                                        {% endblock %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Dev-web </strong> por <a href="https://www.tiktok.com/@maker_dreick_oficial?lang=es">Dreick</a>.
+                    Todos los Derechos Reservados <a href="https://dicyt.upea.bo/">  © dicyt 2024 </a>.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal para mostrar el contenido de ayuda al hacer clic en Ayuda -->
+    <div class="modal" id="modal-help">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <img src="{{ url_for('static', filename='img_data/cortar.png') }}" />
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>Usuario: {{ usuario }}</span>
+                                </strong>
+                                <br />
+                               Requiero soporte tecnico !!!
+                                <br />
+                                <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control">
+                                <textarea class="textarea" placeholder="Agregar un comentario..."></textarea>
+                            </p>
+                        </div>
+                        <nav class="level">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <a class="button is-info">Enviar</a>
+                                </div>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <label class="checkbox">
+                                        <input type="checkbox" /> Presiona enter para enviar
+                                    </label>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Modal para mostrar el contenido de media al hacer clic en Versión -->
+    <div class="modal" id="modal-version">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <p class="title">Contenido de Versión</p>
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <img src="{{ url_for('static', filename='img_data/cortar.png') }}" />
+                        </p>
+                    </figure> 
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>Erick Conde Fernandez</strong> <small>@tiktok.com/maker_dreick_oficial<small> <small>31m</small>
+                                <br />
+                                Desarrollamos tus sueños en poco tiempo, recuerda que tenemos todos tipo de planes para cubrir tus necesidades.
+                            </p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                <a class="level-item">
+                                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                                </a>
+                                <a class="level-item">
+                                    <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                </a>
+                                <a class="level-item">
+                                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Modal para videos -->
+    <div class="modal" id="modal-video">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <video controls autoplay>
+                    <source id="modal-video-source" src="" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Scripts de Bulma y personalizados -->
+    <script src="{{ url_for('static', filename='script/regla.js') }}"></script>
+    <script src="{{ url_for('static', filename='/web_local/script_/FontAwesome.js') }}"></script><!-- AQUI SON LOS ICONOS Font Awesome Free -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var adminMenu = document.getElementById('admin-menu');
+            var adminMenuOptions = document.getElementById('admin-menu-options');
+    
+            adminMenu.addEventListener('click', function () {
+                adminMenuOptions.style.display = (adminMenuOptions.style.display === 'none') ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

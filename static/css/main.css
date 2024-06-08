@@ -1,0 +1,14 @@
+/* Importar todos los componentes */
+@import url('admin.css');
+@import url('navbar.css');
+@import url('sidebar.css');
+@import url('content.css');
+@import url('modal.css');
+@import url('footer.css');
+
+/* Estilos globales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}

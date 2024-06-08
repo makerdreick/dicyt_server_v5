@@ -1,0 +1,18 @@
+<!--menu.html-->
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.footer {
+    position: fixed; /* Fija el footer en la ventana del navegador */
+    left: 0; /* Lo coloca en el borde izquierdo */
+    right: 0; /* Lo coloca en el borde derecho */
+    bottom: 0; /* Lo coloca en la parte inferior */
+    padding: 15px; /* Agrega espacio al contenido del footer */
+    background-color: #f9f9f9; /* Cambia el color de fondo si es necesario */
+    border-top: 1px solid #ddd; /* Agrega un borde superior opcional */
+    z-index: 1000; /* Asegura que esté en la parte superior de otros elementos */
+}
+</style>
+{% include "formulario_f.html" %}
+{% endblock %}

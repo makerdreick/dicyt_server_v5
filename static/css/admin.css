@@ -1,0 +1,52 @@
+/* Estilos exclusivos para la sección administrativa */
+.admin-container {
+    max-width: 960px;
+    margin: 0 auto;
+    border-right: 2px solid #ccc;
+    padding-right: 20px;
+}
+
+.admin-empty-container {
+    flex-grow: 1;
+}
+
+.admin-columns {
+    display: flex;
+}
+
+.admin-menu {
+    flex: 1;
+}
+
+.admin-main-panel {
+    flex: 3;
+}
+
+.admin-logo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.admin-logo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.admin-logo strong {
+    font-weight: bold;
+    display: block;
+}
+
+.admin-menu-label {
+    font-weight: bold;
+}
+
+.admin-column {
+    padding: 20px;
+}
+
+.admin-card {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,134 @@
+<!--index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Mi Red Social</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <style>
+        header {
+            border-bottom: 50px solid #3b5998; /* Agregar un borde inferior de color azul */
+            padding-bottom: 1px; /* Espacio adicional en la parte inferior del header */
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            margin-bottom: 100px; /* Añadimos espacio para el footer */
+        }
+
+        .navbar {
+            background-color: #3b5998;
+            margin-bottom: 0; /* Evitar margen inferior en la barra de navegación */
+        }
+
+        .navbar-brand .navbar-item {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-menu {
+            background-color: #3b5998;
+        }
+
+        .navbar-menu .navbar-start a {
+            color: white;
+            margin-right: 20px;
+        }
+
+        .navbar-menu .navbar-start a:hover {
+            color: #f0f2f5;
+        }
+
+        .navbar-menu .navbar-end .navbar-item {
+            color: white;
+        }
+
+        .content {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        /* Estilos para el footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 80px; /* Altura del footer */
+            background-color: #3b5998;
+            color: white;
+            text-align: center;
+            padding-top: 20px;
+            transition: height 0.3s; /* Animación de transición */
+        }
+
+        /* Animación para el botón de ingresar */
+        .button-container .button {
+            transition: transform 0.3s;
+        }
+
+        .button-container .button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilos para las imágenes */
+        .image-container {
+            margin-top: 20px;
+        }
+
+        /* Estilos responsivos */
+        @media screen and (max-width: 768px) {
+            .footer {
+                height: 60px; /* Reducir altura del footer en dispositivos móviles */
+            }
+        }
+        .button-container .button:hover {
+            transform: scale(1.1); /* Efecto de latido al hacer hover sobre el botón */
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+    </header>
+    <!-- Contenido principal -->
+    <div class="columns is-centered">
+        <div class="column is-three-quarters">
+            <div class="content">
+                <h1 class="title">Bienvenidos a Dicyt</h1>
+                <h2 class="subtitle">Sistema de Certificación</h2>
+                <div class="columns is-centered image-container">
+                    <div class="column is-one-third">
+                        <img src="{{ url_for('static', filename='img_data/upea1.png') }}" alt="Imagen de inicio" style="max-width: 80%; height: auto;">
+                    </div>
+                    <div class="column is-one-third">
+                        <img src="{{ url_for('static', filename='img/local.gif') }}" alt="Imagen de inicio" style="max-width: 80%; height: auto;">
+                        <div class="button-container">
+                            <a class="button is-primary is-large" href="/auth/login">Ingresar</a>
+                        </div>
+                    </div>
+                    <div class="column is-one-third">
+                        <img src="{{ url_for('static', filename='img_data/dicyt.png') }}" alt="Imagen de inicio" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                Dev-web Dreick &copy; 2024 - Todos los derechos reservados UPEA 
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
